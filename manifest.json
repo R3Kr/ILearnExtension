@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "ILearn Extension",
+  "description": "Makes the ILearn and NextILearn not suck",
+  "version": "1.0",
+  "action": {
+    "default_popup": "hello.html",
+    "default_icon": {
+      "16": "ilearn.png",
+      "48": "ilearn.png",
+      "128": "ilearn.png"
+    }
+  },
+  "icons": {
+    "16": "ilearn.png",
+    "48": "ilearn.png",
+    "128": "ilearn.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage"],
+  "content_scripts": [
+    { "matches": ["https://*.dsv.su.se/*"], "js": ["content.js"] }
+  ]
+}

@@ -2,10 +2,16 @@
   "name": "ilearnextension",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "dev": "bun build ./popup.ts ./content.ts ./background.ts --outdir ./dist --watch",
+    "build": "cp ./ilearn.png ./dist && cp ./manifest.json ./dist && cp ./hello.html ./dist && bun build ./popup.ts ./content.ts ./background.ts --outdir ./dist --minify"
+  },
   "devDependencies": {
-    "bun-types": "latest"
+    "bun-types": "latest",
+    "@types/chrome": "^0.0.258"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   }
+  
 }
