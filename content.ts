@@ -1,17 +1,9 @@
+import { henkeb } from "henkeb";
+import { daisyScript } from "./daisy";
 import { Prefs } from "./types";
+import { unbind_event_listeners } from "./utils";
 
-var unbind_event_listeners = function (node: HTMLAnchorElement) {
-  var parent = node.parentNode;
-  if (parent) {
-    parent.replaceChild(node.cloneNode(true), node);
-  } else {
-    var ex = new Error(
-      "Cannot remove event listeners from detached or document nodes"
-    ) as any;
-    ex.code = DOMException[(ex.name = "HIERARCHY_REQUEST_ERR")];
-    throw ex;
-  }
-};
+
 
 const func = async (root: Document | HTMLElement) => {
   //console.log("Script started!!!");
@@ -70,3 +62,10 @@ observer.observe(targetNode, {
   childList: true,
   subtree: true,
 });
+
+if (window.location.hostname.match("daisy")) {
+  daisyScript();
+}
+if (window.location.hostname.match("nextilearn")) {
+  henkeb();
+}
