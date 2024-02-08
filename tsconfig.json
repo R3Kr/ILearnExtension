@@ -17,13 +17,9 @@
     "allowJs": true,
     "types": [
       "bun-types", // add Bun global
-      "@types/chrome"
+      "@types/webextension-polyfill"
     ],
     //"skipLibCheck": true,
-    "baseUrl": "./",
-    "paths": {
-      "react": ["./node_modules/preact/compat/"],
-      "react-dom": ["./node_modules/preact/compat/"]
-    }
+    "baseUrl": "./"
   }
 }

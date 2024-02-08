@@ -3,14 +3,22 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "dev": "bun build ./popup.ts ./content.ts ./background.ts --outdir ./dist --watch",
-    "build": "cp ./ilearn.png ./dist && cp ./manifest.json ./dist && cp ./hello.html ./dist && bun build ./popup.ts ./content.ts ./background.ts --outdir ./dist --minify"
+    "dev": "bun run ./build-scripts/post-script.ts && bun build ./popup.ts ./content.ts ./background.ts --outdir ./dist --watch",
+    "build": "bun run ./build-scripts/build.ts"
   },
   "devDependencies": {
-    "bun-types": "latest",
-    "@types/chrome": "^0.0.258"
+    "@types/react": "18",
+    "@types/react-dom": "18",
+    "@types/webextension-polyfill": "^0.10.7",
+    "bun-types": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.18.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "webextension-polyfill": "^0.10.0"
   }
 }
