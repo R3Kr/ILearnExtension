@@ -1,31 +1,34 @@
+import { autoRefreshReact } from "autoRefreshReact";
+import { setStorage } from "utils";
 import browser from "webextension-polyfill";
 
 const main = async () => {
+  await setStorage();
   const app = document.getElementById("app")!;
 
   const new_tab_button = document.createElement("button");
   new_tab_button.innerHTML = (
-    await browser.storage.sync.get("new_tab")
+    await browser.storage.local.get("new_tab")
   ).new_tab;
   new_tab_button.addEventListener("click", async (e) => {
-    const state = (await browser.storage.sync.get("new_tab"))
+    const state = (await browser.storage.local.get("new_tab"))
       .new_tab as boolean;
-    await browser.storage.sync.set({ new_tab: !state });
+    await browser.storage.local.set({ new_tab: !state });
     new_tab_button.innerHTML = (
-      await browser.storage.sync.get("new_tab")
+      await browser.storage.local.get("new_tab")
     ).new_tab;
   });
 
   const force_download_button = document.createElement("button");
   force_download_button.innerHTML = (
-    await browser.storage.sync.get("force_download")
+    await browser.storage.local.get("force_download")
   ).force_download;
   force_download_button.addEventListener("click", async (e) => {
-    const state = (await browser.storage.sync.get("force_download"))
+    const state = (await browser.storage.local.get("force_download"))
       .force_download as boolean;
-    await browser.storage.sync.set({ force_download: !state });
+    await browser.storage.local.set({ force_download: !state });
     force_download_button.innerHTML = (
-      await browser.storage.sync.get("force_download")
+      await browser.storage.local.get("force_download")
     ).force_download;
   });
 
@@ -40,3 +43,5 @@ const main = async () => {
   app.appendChild(force_download_button);
 };
 main();
+
+//autoRefreshReact()

@@ -3,7 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "dev": "bun run ./build-scripts/post-script.ts && bun build ./popup.ts ./content.ts ./background.ts --outdir ./dist --watch",
+    "dev": "bun run ./build-scripts/post-script.ts && bun build ./popup.ts ./content.ts --outdir ./dist --watch",
     "build": "bun run ./build-scripts/build.ts"
   },
   "devDependencies": {

@@ -1,14 +1,14 @@
 import { henkeb } from "henkeb";
 import { daisyScript } from "./daisy";
 import { Prefs } from "./types";
-import { unbind_event_listeners } from "./utils";
+import { setStorage, unbind_event_listeners } from "./utils";
 import { autoRefreshReact } from "autoRefreshReact";
 import browser from "webextension-polyfill";
 
-
 const func = async (root: Document | HTMLElement) => {
-  //console.log("Script started!!!");
-  const prefs = (await browser.storage.sync.get([
+  //console.log("Firefox test :)!!!");
+  await setStorage();
+  const prefs = (await browser.storage.local.get([
     "new_tab",
     "force_download",
   ])) as Prefs;
@@ -44,8 +44,8 @@ const func = async (root: Document | HTMLElement) => {
 };
 func(document);
 
-browser.storage.sync.onChanged.addListener(() => func(document));
-//console.log("din mamma");
+browser.storage.local.onChanged.addListener(() => func(document));
+//console.log("Set event listener");
 
 const targetNode = document.querySelector("body")!;
 const observer = new MutationObserver((mutationList, observer) => {
@@ -63,6 +63,7 @@ observer.observe(targetNode, {
   childList: true,
   subtree: true,
 });
+//console.log("Started observing");
 
 if (window.location.hostname.match("daisy")) {
   daisyScript();
@@ -73,5 +74,4 @@ if (window.location.hostname.match("nextilearn")) {
 
 if (window.location.href.match("GetPersonalQueueStatusServlet")) {
   autoRefreshReact();
-
 }

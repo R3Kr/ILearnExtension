@@ -11,14 +11,13 @@
       "128": "ilearn.png"
     }
   },
+  
   "icons": {
     "16": "ilearn.png",
     "48": "ilearn.png",
     "128": "ilearn.png"
   },
-  "background": {
-    "service_worker": "background.js"
-  },
+  
   "permissions": ["storage"],
   "content_scripts": [
     { "matches": ["https://*.dsv.su.se/*"], "js": ["content.js"] }

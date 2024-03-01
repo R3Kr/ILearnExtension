@@ -1,8 +1,8 @@
-import postscript from "./post-script";
+import {postscript} from "./post-script";
 
 //await prescript();
 const result = await Bun.build({
-  entrypoints: ["content.ts", "background.ts", "popup.ts"],
+  entrypoints: ["content.ts", "popup.ts"],
   outdir: "./dist",
   minify: true,
   //splitting: true,

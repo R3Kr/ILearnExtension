@@ -1,6 +1,9 @@
 import { $ } from "bun";
 
-export default async function postscript() {
-  await $`mkdir dist && cp ./ilearn.png ./dist && cp ./manifest.json ./dist && cp ./hello.html ./dist`;
+export  async function postscript() {
+  await $`mkdir dist`;
+  await $`cp ./ilearn.png ./dist `;
+  await $`cp ./manifest.json ./dist `;
+  await $`cp ./hello.html ./dist`;
 }
 await postscript();

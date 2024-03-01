@@ -54,7 +54,7 @@ const Body = () => {
   return (
     <>
       <div dangerouslySetInnerHTML={{ __html: data || "" }}></div>
-      Refresh rate: 
+      Refresh rate:
       <input
         type="number"
         step={10}
